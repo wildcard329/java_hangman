@@ -4,23 +4,25 @@ import java.util.Scanner;
 import src.GameList;
 import src.GameOperation;
 import src.LetterList;
+import src.constants.GameStrings;
 
 public class Main {
   public static void main(String[] args) {
     GameOperation game = new GameOperation();
     GameList gameList = new GameList();
+    GameStrings gStrings = new GameStrings();
+    LetterList letterList = new LetterList();
     List<String> wordList = gameList.initList();
-    gameList.addArrStr(wordList, "full moon");
-    gameList.addArrStr(wordList, "silver bullet");
-    gameList.addArrStr(wordList, "creepy doll");
-    gameList.addArrStr(wordList, "haunted mansion");
-    gameList.addArrStr(wordList, "ghost stories");
-    gameList.addArrStr(wordList, "spooky scary skeletons");
-    gameList.addArrStr(wordList, "chills and thrills");
+    List<Character> letters = letterList.initList();
+    gameList.addArrStr(wordList, gStrings.gameWord1);
+    gameList.addArrStr(wordList, gStrings.gameWord2);
+    gameList.addArrStr(wordList, gStrings.gameWord3);
+    gameList.addArrStr(wordList, gStrings.gameWord4);
+    gameList.addArrStr(wordList, gStrings.gameWord5);
+    gameList.addArrStr(wordList, gStrings.gameWord6);
+    gameList.addArrStr(wordList, gStrings.gameWord7);
     String word = gameList.getRandomArrStr(wordList);
 
-    LetterList letterList = new LetterList();
-    List<Character> letters = letterList.initList();
     for (int i = 0; i < word.length(); i++) {
       Boolean isCharInStrArr = letterList.checkListForChar(letters, word.charAt(i));
       if (!isCharInStrArr && word.charAt(i) != ' ') {
@@ -36,11 +38,11 @@ public class Main {
     int wrongCounter = 0;
     game.printGameScreen(correctGuesses, word, wrongCounter);
     while (correctGuesses.size() < letters.size()) {
-      if (wrongCounter == 7) {
-        System.out.println("Sorry, you lose. Good game.");
+      if (wrongCounter == 6) {
+        System.out.println(gStrings.loseGame);
         break;
       }
-      System.out.print("Guess a letter");
+      System.out.print(gStrings.inputPrompt);
       String guessInput = scanner.nextLine();
       Character guess = guessInput.charAt(0);
       Boolean isCharInStrArr = letterList.checkListForChar(letters, guess);
@@ -52,7 +54,7 @@ public class Main {
       }
       game.printGameScreen(correctGuesses, word, wrongCounter);
     }
-
+    System.out.println(gStrings.winGame);
     scanner.close();
   }
 }
