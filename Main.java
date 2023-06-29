@@ -2,71 +2,15 @@ import java.util.List;
 import java.util.Scanner;
 
 import src.GameList;
+import src.GameOperation;
 import src.GameWord;
 import src.LetterList;
 
 public class Main {
   public static void main(String[] args) {
-    String gameCard0 = "HANGMAN\n" +
-        "  _  \n" +
-        " | | \n" +
-        " |   \n" +
-        " |   \n" +
-        " |   \n" +
-        "-----";
-    String gameCard1 = "HANGMAN\n" +
-        "  _  \n" +
-        " | | \n" +
-        " | O \n" +
-        " |   \n" +
-        " |   \n" +
-        "-----";
-    String gameCard2 = "HANGMAN\n" +
-        "  _  \n" +
-        " | | \n" +
-        " | O \n" +
-        " | | \n" +
-        " |   \n" +
-        "-----";
-    String gameCard3 = "HANGMAN\n" +
-        "  _  \n" +
-        " | | \n" +
-        " | O \n" +
-        " |/| \n" +
-        " |   \n" +
-        "-----";
-    String gameCard4 = "HANGMAN\n" +
-        "  _  \n" +
-        " | | \n" +
-        " | O \n" +
-        " |/|\\\n" +
-        " |   \n " +
-        "-----";
-    String gameCard5 = "HANGMAN\n" +
-        "  _  \n" +
-        " | | \n" +
-        " | O \n" +
-        " |/|\\\n" +
-        " |   \n" +
-        "-----";
-    String gameCard6 = "HANGMAN\n" +
-        "  _  \n" +
-        " | | \n" +
-        " | O \n" +
-        " |/|\\\n" +
-        " |/  \n " +
-        "-----";
-    String gameCard7 = "HANGMAN\n" +
-        "  _  \n" +
-        " | | \n" +
-        " | O \n" +
-        " |/|\\\n" +
-        " |/\\\n" +
-        "-----";
-
+    GameOperation game = new GameOperation();
     GameList gameList = new GameList();
     List<String> wordList = gameList.initList();
-    List<String> gameCards = gameList.initList();
     gameList.addArrStr(wordList, "full moon");
     gameList.addArrStr(wordList, "silver bullet");
     gameList.addArrStr(wordList, "creepy doll");
@@ -74,15 +18,6 @@ public class Main {
     gameList.addArrStr(wordList, "ghost stories");
     gameList.addArrStr(wordList, "spooky scary skeletons");
     gameList.addArrStr(wordList, "chills and thrills");
-    gameList.addArrStr(gameCards, gameCard0);
-    gameList.addArrStr(gameCards, gameCard1);
-    gameList.addArrStr(gameCards, gameCard2);
-    gameList.addArrStr(gameCards, gameCard3);
-    gameList.addArrStr(gameCards, gameCard4);
-    gameList.addArrStr(gameCards, gameCard5);
-    gameList.addArrStr(gameCards, gameCard6);
-    gameList.addArrStr(gameCards, gameCard7);
-
     String word = gameList.getRandomArrStr(wordList);
 
     LetterList letterList = new LetterList();
@@ -101,7 +36,10 @@ public class Main {
     GameWord gameWord = new GameWord();
     Scanner scanner = new Scanner(System.in);
     int wrongCounter = 0;
-    System.out.println(gameCard0);
+    String startingCard = game.getGameCard(wrongCounter);
+    System.out.println(startingCard);
+    String hint = gameWord.getGameClue(correctGuesses, word);
+    System.out.println(hint);
     while (correctGuesses.size() < letters.size()) {
       if (wrongCounter == 7) {
         System.out.println("Sorry, you lose. Good game.");
@@ -118,8 +56,9 @@ public class Main {
         wrongCounter++;
       }
       String hints = gameWord.getGameClue(correctGuesses, word);
-      String currentGameCard = gameList.getArrStr(gameCards, wrongCounter);
+      String currentGameCard = game.getGameCard(wrongCounter);
       System.out.println(currentGameCard);
+      ;
       System.out.println("Hint: " + hints);
     }
 
