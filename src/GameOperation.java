@@ -9,64 +9,65 @@ public class GameOperation {
   public boolean checkGuess(List<Character> answers, Character guess) {
     return answers.contains(guess);
   }
+
   public String getGameCard(int wrongCounter) {
     String gameCard;
     String gameCard0 = "HANGMAN\n" +
-    "  _  \n" +
-    " | | \n" +
-    " |   \n" +
-    " |   \n" +
-    " |   \n" +
-    "-----";
-String gameCard1 = "HANGMAN\n" +
-    "  _  \n" +
-    " | | \n" +
-    " | O \n" +
-    " |   \n" +
-    " |   \n" +
-    "-----";
-String gameCard2 = "HANGMAN\n" +
-    "  _  \n" +
-    " | | \n" +
-    " | O \n" +
-    " | | \n" +
-    " |   \n" +
-    "-----";
-String gameCard3 = "HANGMAN\n" +
-    "  _  \n" +
-    " | | \n" +
-    " | O \n" +
-    " |/| \n" +
-    " |   \n" +
-    "-----";
-String gameCard4 = "HANGMAN\n" +
-    "  _  \n" +
-    " | | \n" +
-    " | O \n" +
-    " |/|\\\n" +
-    " |   \n " +
-    "-----";
-String gameCard5 = "HANGMAN\n" +
-    "  _  \n" +
-    " | | \n" +
-    " | O \n" +
-    " |/|\\\n" +
-    " |   \n" +
-    "-----";
-String gameCard6 = "HANGMAN\n" +
-    "  _  \n" +
-    " | | \n" +
-    " | O \n" +
-    " |/|\\\n" +
-    " |/  \n " +
-    "-----";
-String gameCard7 = "HANGMAN\n" +
-    "  _  \n" +
-    " | | \n" +
-    " | O \n" +
-    " |/|\\\n" +
-    " |/ \\\n" +
-    "-----";
+        "  _  \n" +
+        " | | \n" +
+        " |   \n" +
+        " |   \n" +
+        " |   \n" +
+        "-----";
+    String gameCard1 = "HANGMAN\n" +
+        "  _  \n" +
+        " | | \n" +
+        " | O \n" +
+        " |   \n" +
+        " |   \n" +
+        "-----";
+    String gameCard2 = "HANGMAN\n" +
+        "  _  \n" +
+        " | | \n" +
+        " | O \n" +
+        " | | \n" +
+        " |   \n" +
+        "-----";
+    String gameCard3 = "HANGMAN\n" +
+        "  _  \n" +
+        " | | \n" +
+        " | O \n" +
+        " |/| \n" +
+        " |   \n" +
+        "-----";
+    String gameCard4 = "HANGMAN\n" +
+        "  _  \n" +
+        " | | \n" +
+        " | O \n" +
+        " |/|\\\n" +
+        " |   \n " +
+        "-----";
+    String gameCard5 = "HANGMAN\n" +
+        "  _  \n" +
+        " | | \n" +
+        " | O \n" +
+        " |/|\\\n" +
+        " |   \n" +
+        "-----";
+    String gameCard6 = "HANGMAN\n" +
+        "  _  \n" +
+        " | | \n" +
+        " | O \n" +
+        " |/|\\\n" +
+        " |/  \n " +
+        "-----";
+    String gameCard7 = "HANGMAN\n" +
+        "  _  \n" +
+        " | | \n" +
+        " | O \n" +
+        " |/|\\\n" +
+        " |/ \\\n" +
+        "-----";
     switch (wrongCounter) {
       case 0:
         gameCard = gameCard0;
@@ -97,6 +98,7 @@ String gameCard7 = "HANGMAN\n" +
     }
     return gameCard;
   }
+
   public String getGameClue(List<Character> guesses, String gameString) {
     String gameCard = "";
     for (int i = 0; i < gameString.length(); i++) {
@@ -107,5 +109,12 @@ String gameCard7 = "HANGMAN\n" +
       }
     }
     return gameCard;
+  }
+
+  public void printGameScreen(List<Character> guesses, String answer, int incorrectCount) {
+    String gameCard = getGameCard(incorrectCount);
+    String gameHint = getGameClue(guesses, answer);
+    System.out.println(gameCard);
+    System.out.println(gameHint);
   }
 }
