@@ -63,5 +63,6 @@ public class GameStrings {
   public String loseGame = "Sorry, you lose. Good game.";
   public String emptyString = "";
   public String mysteryChar = "_";
+  public String invalidCounter = "This counter is invalid";
   public String inputPrompt = "Guess a letter ";
 }

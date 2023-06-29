@@ -5,48 +5,53 @@ import java.util.List;
 import src.constants.GameStrings;
 
 public class GameOperation {
+  public boolean checkGameOver(int amountCorrect, int amountTotal, int amountIncorrect) {
+    GameStrings gStrings = new GameStrings();
+    if (amountCorrect == amountTotal) {
+      System.out.println(gStrings.winGame);
+      return true;
+    } else if (amountIncorrect == 6) {
+      System.out.println(gStrings.loseGame);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public boolean checkGuess(List<Character> answers, Character guess) {
     return answers.contains(guess);
   }
 
   public String getGameCard(int wrongCounter) {
-    String gameCard;
     GameStrings gStrings = new GameStrings();
     switch (wrongCounter) {
       case 0:
-        gameCard = gStrings.gameCard0;
-        break;
+        return gStrings.gameCard0;
       case 1:
-        gameCard = gStrings.gameCard1;
-        break;
+        return gStrings.gameCard1;
       case 2:
-        gameCard = gStrings.gameCard2;
-        break;
+        return gStrings.gameCard2;
       case 3:
-        gameCard = gStrings.gameCard3;
-        break;
+        return gStrings.gameCard3;
       case 4:
-        gameCard = gStrings.gameCard4;
-        break;
+        return gStrings.gameCard4;
       case 5:
-        gameCard = gStrings.gameCard5;
-        break;
+        return gStrings.gameCard5;
       case 6:
-        gameCard = gStrings.gameCard6;
-        break;
+        return gStrings.gameCard6;
       default:
-        gameCard = gStrings.gameCard0;
+        return gStrings.invalidCounter;
     }
-    return gameCard;
   }
 
   public String getGameClue(List<Character> guesses, String answer) {
-    String gameCard = "";
+    GameStrings gStrings = new GameStrings();
+    String gameCard = gStrings.emptyString;
     for (int i = 0; i < answer.length(); i++) {
       if (guesses.contains(answer.charAt(i)) || answer.charAt(i) == ' ') {
         gameCard += answer.charAt(i);
       } else {
-        gameCard += "_";
+        gameCard += gStrings.mysteryChar;
       }
     }
     return gameCard;
