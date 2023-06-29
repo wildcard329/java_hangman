@@ -37,11 +37,7 @@ public class Main {
     Scanner scanner = new Scanner(System.in);
     int wrongCounter = 0;
     game.printGameScreen(correctGuesses, word, wrongCounter);
-    while (correctGuesses.size() < letters.size()) {
-      if (wrongCounter == 6) {
-        System.out.println(gStrings.loseGame);
-        break;
-      }
+    while (!game.checkGameOver(correctGuesses.size(), letters.size(), wrongCounter)) {
       System.out.print(gStrings.inputPrompt);
       String guessInput = scanner.nextLine();
       Character guess = guessInput.charAt(0);
@@ -54,7 +50,6 @@ public class Main {
       }
       game.printGameScreen(correctGuesses, word, wrongCounter);
     }
-    System.out.println(gStrings.winGame);
     scanner.close();
   }
 }
