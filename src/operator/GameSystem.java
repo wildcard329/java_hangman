@@ -1,10 +1,12 @@
-package src;
+package src.operator;
 
 import java.util.List;
 
 import src.constants.GameStrings;
+import src.lists.CharList;
+import src.lists.StrList;
 
-public class GameOperation {
+public class GameSystem {
   public boolean checkGameOver(int amountCorrect, int amountTotal, int amountIncorrect) {
     GameStrings gStrings = new GameStrings();
     if (amountCorrect == amountTotal) {
@@ -55,6 +57,34 @@ public class GameOperation {
       }
     }
     return gameCard;
+  }
+
+  public List<Character> getGameWordChars(String gameWord) {
+    CharList letterList = new CharList();
+    List<Character> letters = letterList.initList();
+    for (int i = 0; i < gameWord.length(); i++) {
+      Character currentChar = gameWord.charAt(i);
+      Boolean isCharInStrArr = letterList.checkListForChar(letters, currentChar);
+      if (!isCharInStrArr && currentChar != ' ') {
+        letterList.addArrChar(letters, currentChar);
+      }
+    }
+    return letters;
+  }
+
+  public String initWord() {
+    StrList strList = new StrList();
+    GameStrings gStrings = new GameStrings();
+    List<String> wordList = strList.initList();
+    strList.addArrStr(wordList, gStrings.gameWord1);
+    strList.addArrStr(wordList, gStrings.gameWord2);
+    strList.addArrStr(wordList, gStrings.gameWord3);
+    strList.addArrStr(wordList, gStrings.gameWord4);
+    strList.addArrStr(wordList, gStrings.gameWord5);
+    strList.addArrStr(wordList, gStrings.gameWord6);
+    strList.addArrStr(wordList, gStrings.gameWord7);
+    String word = strList.getRandomArrStr(wordList);
+    return word;
   }
 
   public void printGameScreen(List<Character> guesses, String answer, int incorrectCount) {
