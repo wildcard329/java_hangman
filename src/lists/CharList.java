@@ -1,9 +1,9 @@
-package src;
+package src.lists;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LetterList {
+public class CharList {
   public List<Character> initList() {
     return new ArrayList<>();
   }
@@ -14,9 +14,5 @@ public class LetterList {
 
   public boolean checkListForChar(List<Character> arr, Character character) {
     return arr.contains(character);
-  }
-
-  public int getCharListLen(List<Character> arr) {
-    return arr.size();
   }
 }

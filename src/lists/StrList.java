@@ -1,10 +1,10 @@
-package src;
+package src.lists;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class GameList {
+public class StrList {
   public List<String> initList() {
     return new ArrayList<>();
   }
@@ -22,9 +22,5 @@ public class GameList {
     int randomIndex = random.nextInt(arr.size());
     String randomString = getArrStr(arr, randomIndex);
     return randomString;
-  }
-
-  public void rmArrStr(List<String> arr, String item) {
-    arr.remove(item);
   }
 }

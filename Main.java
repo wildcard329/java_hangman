@@ -1,27 +1,27 @@
 import java.util.List;
 import java.util.Scanner;
 
-import src.GameList;
 import src.GameOperation;
-import src.LetterList;
 import src.constants.GameStrings;
+import src.lists.CharList;
+import src.lists.StrList;
 
 public class Main {
   public static void main(String[] args) {
     GameOperation game = new GameOperation();
-    GameList gameList = new GameList();
+    StrList strList = new StrList();
     GameStrings gStrings = new GameStrings();
-    LetterList letterList = new LetterList();
-    List<String> wordList = gameList.initList();
+    CharList letterList = new CharList();
+    List<String> wordList = strList.initList();
     List<Character> letters = letterList.initList();
-    gameList.addArrStr(wordList, gStrings.gameWord1);
-    gameList.addArrStr(wordList, gStrings.gameWord2);
-    gameList.addArrStr(wordList, gStrings.gameWord3);
-    gameList.addArrStr(wordList, gStrings.gameWord4);
-    gameList.addArrStr(wordList, gStrings.gameWord5);
-    gameList.addArrStr(wordList, gStrings.gameWord6);
-    gameList.addArrStr(wordList, gStrings.gameWord7);
-    String word = gameList.getRandomArrStr(wordList);
+    strList.addArrStr(wordList, gStrings.gameWord1);
+    strList.addArrStr(wordList, gStrings.gameWord2);
+    strList.addArrStr(wordList, gStrings.gameWord3);
+    strList.addArrStr(wordList, gStrings.gameWord4);
+    strList.addArrStr(wordList, gStrings.gameWord5);
+    strList.addArrStr(wordList, gStrings.gameWord6);
+    strList.addArrStr(wordList, gStrings.gameWord7);
+    String word = strList.getRandomArrStr(wordList);
 
     for (int i = 0; i < word.length(); i++) {
       Boolean isCharInStrArr = letterList.checkListForChar(letters, word.charAt(i));
@@ -30,8 +30,8 @@ public class Main {
       }
     }
 
-    LetterList guessList = new LetterList();
-    LetterList correctGuessList = new LetterList();
+    CharList guessList = new CharList();
+    CharList correctGuessList = new CharList();
     List<Character> guesses = guessList.initList();
     List<Character> correctGuesses = correctGuessList.initList();
     Scanner scanner = new Scanner(System.in);
