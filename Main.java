@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 import src.GameList;
 import src.GameOperation;
-import src.GameWord;
 import src.LetterList;
 
 public class Main {
@@ -33,13 +32,9 @@ public class Main {
     LetterList correctGuessList = new LetterList();
     List<Character> guesses = guessList.initList();
     List<Character> correctGuesses = correctGuessList.initList();
-    GameWord gameWord = new GameWord();
     Scanner scanner = new Scanner(System.in);
     int wrongCounter = 0;
-    String startingCard = game.getGameCard(wrongCounter);
-    System.out.println(startingCard);
-    String hint = gameWord.getGameClue(correctGuesses, word);
-    System.out.println(hint);
+    game.printGameScreen(correctGuesses, word, wrongCounter);
     while (correctGuesses.size() < letters.size()) {
       if (wrongCounter == 7) {
         System.out.println("Sorry, you lose. Good game.");
@@ -55,11 +50,7 @@ public class Main {
       } else {
         wrongCounter++;
       }
-      String hints = gameWord.getGameClue(correctGuesses, word);
-      String currentGameCard = game.getGameCard(wrongCounter);
-      System.out.println(currentGameCard);
-      ;
-      System.out.println("Hint: " + hints);
+      game.printGameScreen(correctGuesses, word, wrongCounter);
     }
 
     scanner.close();
