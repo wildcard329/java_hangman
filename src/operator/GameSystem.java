@@ -24,6 +24,20 @@ public class GameSystem {
     return answers.contains(guess);
   }
 
+  public String formatCharArrayToString(List<Character> chars) {
+    int arrSize = chars.size();
+    String outputStr = "attempts: ";
+    for (int i = 0; i < arrSize; i++) {
+      Character arrChar = chars.get(i);
+      if (i == arrSize - 1) {
+        outputStr += arrChar.toString() + ' ';
+      } else {
+        outputStr += arrChar.toString() + ", ";
+      }
+    }
+    return outputStr;
+  }
+
   public String getGameCard(int wrongCounter) {
     GameStrings gStrings = new GameStrings();
     switch (wrongCounter) {
@@ -87,10 +101,13 @@ public class GameSystem {
     return word;
   }
 
-  public void printGameScreen(List<Character> guesses, String answer, int incorrectCount) {
+  public void printGameScreen(List<Character> correctGuesses, List<Character> guesses, String answer,
+      int incorrectCount) {
     String gameCard = getGameCard(incorrectCount);
-    String gameHint = getGameClue(guesses, answer);
+    String userGuesses = formatCharArrayToString(guesses);
+    String gameHint = getGameClue(correctGuesses, answer);
     System.out.println(gameCard);
+    System.out.println(userGuesses);
     System.out.println(gameHint);
   }
 }

@@ -20,7 +20,7 @@ public class Main {
     int wrongCharCounter = 0;
     int rightCharCounter = 0;
     int totalCharCounter = letters.size();
-    gameSystem.printGameScreen(correctGuesses, word, wrongCharCounter);
+    gameSystem.printGameScreen(correctGuesses, guesses, word, wrongCharCounter);
 
     while (!gameSystem.checkGameOver(rightCharCounter, totalCharCounter, wrongCharCounter)) {
       System.out.print(gStrings.inputPrompt);
@@ -34,7 +34,7 @@ public class Main {
       } else {
         wrongCharCounter++;
       }
-      gameSystem.printGameScreen(correctGuesses, word, wrongCharCounter);
+      gameSystem.printGameScreen(correctGuesses, guesses, word, wrongCharCounter);
     }
     scanner.close();
   }
