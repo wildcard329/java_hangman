@@ -26,12 +26,18 @@ public class Main {
       System.out.print(gStrings.inputPrompt);
       String guessInput = scanner.nextLine();
       Character guess = guessInput.charAt(0);
-      Boolean isCharInStrArr = gameSystem.checkGuess(letters, guess);
-      guessList.addArrChar(guesses, guess);
-      if (isCharInStrArr) {
+      // Boolean isCharInStrArr = gameSystem.checkGuess(letters, guess);
+      int guessRes = gameSystem.processUserGuess(guesses, letters, guess);
+      if (guessRes == 1) {
         rightCharCounter++;
+        guessList.addArrChar(guesses, guess);
         correctGuessList.addArrChar(correctGuesses, guess);
+      } else if (guessRes == 0) {
+        System.out.println("You have already guessed this letter.");
+        System.out.print("Press enter key to continue.");
+        scanner.nextLine();
       } else {
+        guessList.addArrChar(guesses, guess);
         wrongCharCounter++;
       }
       gameSystem.printGameScreen(correctGuesses, guesses, word, wrongCharCounter);

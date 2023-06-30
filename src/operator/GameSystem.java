@@ -110,4 +110,16 @@ public class GameSystem {
     System.out.println(userGuesses);
     System.out.println(gameHint);
   }
+
+  public int processUserGuess(List<Character> guesses, List<Character> answers, Character guessChar) {
+    int result;
+    if (guesses.contains(guessChar)) {
+      result = 0;
+    } else if (answers.contains(guessChar)) {
+      result = 1;
+    } else {
+      result = -1;
+    }
+    return result;
+  }
 }
