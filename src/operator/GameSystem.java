@@ -75,12 +75,12 @@ public class GameSystem {
 
   public List<Character> getGameWordChars(String gameWord) {
     CharList letterList = new CharList();
-    List<Character> letters = letterList.initList();
+    List<Character> letters = letterList.charsArr;
     for (int i = 0; i < gameWord.length(); i++) {
       Character currentChar = gameWord.charAt(i);
-      Boolean isCharInStrArr = letterList.checkListForChar(letters, currentChar);
+      Boolean isCharInStrArr = letterList.checkListForChar(currentChar);
       if (!isCharInStrArr && currentChar != ' ') {
-        letterList.addArrChar(letters, currentChar);
+        letterList.addArrChar(currentChar);
       }
     }
     return letters;
@@ -89,15 +89,14 @@ public class GameSystem {
   public String initWord() {
     StrList strList = new StrList();
     GameStrings gStrings = new GameStrings();
-    List<String> wordList = strList.initList();
-    strList.addArrStr(wordList, gStrings.gameWord1);
-    strList.addArrStr(wordList, gStrings.gameWord2);
-    strList.addArrStr(wordList, gStrings.gameWord3);
-    strList.addArrStr(wordList, gStrings.gameWord4);
-    strList.addArrStr(wordList, gStrings.gameWord5);
-    strList.addArrStr(wordList, gStrings.gameWord6);
-    strList.addArrStr(wordList, gStrings.gameWord7);
-    String word = strList.getRandomArrStr(wordList);
+    strList.addArrStr(gStrings.gameWord1);
+    strList.addArrStr(gStrings.gameWord2);
+    strList.addArrStr(gStrings.gameWord3);
+    strList.addArrStr(gStrings.gameWord4);
+    strList.addArrStr(gStrings.gameWord5);
+    strList.addArrStr(gStrings.gameWord6);
+    strList.addArrStr(gStrings.gameWord7);
+    String word = strList.getRandomArrStr();
     return word;
   }
 

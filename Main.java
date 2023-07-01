@@ -15,8 +15,8 @@ public class Main {
 
     String word = gameSystem.initWord();
     List<Character> letters = gameSystem.getGameWordChars(word);
-    List<Character> guesses = guessList.initList();
-    List<Character> correctGuesses = correctGuessList.initList();
+    List<Character> guesses = guessList.charsArr;
+    List<Character> correctGuesses = correctGuessList.charsArr;
     int wrongCharCounter = 0;
     int rightCharCounter = 0;
     int totalCharCounter = letters.size();
@@ -26,18 +26,17 @@ public class Main {
       System.out.print(gStrings.inputPrompt);
       String guessInput = scanner.nextLine();
       Character guess = guessInput.charAt(0);
-      // Boolean isCharInStrArr = gameSystem.checkGuess(letters, guess);
       int guessRes = gameSystem.processUserGuess(guesses, letters, guess);
       if (guessRes == 1) {
         rightCharCounter++;
-        guessList.addArrChar(guesses, guess);
-        correctGuessList.addArrChar(correctGuesses, guess);
+        guessList.addArrChar(guess);
+        correctGuessList.addArrChar(guess);
       } else if (guessRes == 0) {
         System.out.println("You have already guessed this letter.");
         System.out.print("Press enter key to continue.");
         scanner.nextLine();
       } else {
-        guessList.addArrChar(guesses, guess);
+        guessList.addArrChar(guess);
         wrongCharCounter++;
       }
       gameSystem.printGameScreen(correctGuesses, guesses, word, wrongCharCounter);
