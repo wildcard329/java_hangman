@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CharList {
-  public List<Character> initList() {
-    return new ArrayList<>();
+  public List<Character> charsArr = new ArrayList<>();
+
+  public void addArrChar(Character character) {
+    this.charsArr.add(0, character);
   }
 
-  public void addArrChar(List<Character> arr, Character character) {
-    arr.add(0, character);
-  }
-
-  public boolean checkListForChar(List<Character> arr, Character character) {
-    return arr.contains(character);
+  public boolean checkListForChar(Character character) {
+    return this.charsArr.contains(character);
   }
 }

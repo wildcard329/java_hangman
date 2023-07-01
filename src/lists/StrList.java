@@ -5,22 +5,20 @@ import java.util.List;
 import java.util.Random;
 
 public class StrList {
-  public List<String> initList() {
-    return new ArrayList<>();
+  public List<String> strArr = new ArrayList<>();
+
+  public void addArrStr(String str) {
+    this.strArr.add(str);
   }
 
-  public void addArrStr(List<String> arr, String item) {
-    arr.add(item);
+  public String getArrStr(int itemIndex) {
+    return this.strArr.get(itemIndex);
   }
 
-  public String getArrStr(List<String> arr, int itemIndex) {
-    return arr.get(itemIndex);
-  }
-
-  public String getRandomArrStr(List<String> arr) {
+  public String getRandomArrStr() {
     Random random = new Random();
-    int randomIndex = random.nextInt(arr.size());
-    String randomString = getArrStr(arr, randomIndex);
+    int randomIndex = random.nextInt(this.strArr.size());
+    String randomString = getArrStr(randomIndex);
     return randomString;
   }
 }
