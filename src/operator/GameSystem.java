@@ -2,18 +2,17 @@ package src.operator;
 
 import java.util.List;
 
-import src.constants.GameStrings;
+import src.constants.Constants;
 import src.lists.CharList;
 import src.lists.StrList;
 
 public class GameSystem {
   public boolean checkGameOver(int amountCorrect, int amountTotal, int amountIncorrect) {
-    GameStrings gStrings = new GameStrings();
     if (amountCorrect == amountTotal) {
-      System.out.println(gStrings.winGame);
+      System.out.println(Constants.winGame);
       return true;
     } else if (amountIncorrect == 6) {
-      System.out.println(gStrings.loseGame);
+      System.out.println(Constants.loseGame);
       return true;
     } else {
       return false;
@@ -39,35 +38,33 @@ public class GameSystem {
   }
 
   public String getGameCard(int wrongCounter) {
-    GameStrings gStrings = new GameStrings();
     switch (wrongCounter) {
       case 0:
-        return gStrings.gameCard0;
+        return Constants.gameCard0;
       case 1:
-        return gStrings.gameCard1;
+        return Constants.gameCard1;
       case 2:
-        return gStrings.gameCard2;
+        return Constants.gameCard2;
       case 3:
-        return gStrings.gameCard3;
+        return Constants.gameCard3;
       case 4:
-        return gStrings.gameCard4;
+        return Constants.gameCard4;
       case 5:
-        return gStrings.gameCard5;
+        return Constants.gameCard5;
       case 6:
-        return gStrings.gameCard6;
+        return Constants.gameCard6;
       default:
-        return gStrings.invalidCounter;
+        return Constants.invalidCounter;
     }
   }
 
   public String getGameClue(List<Character> guesses, String answer) {
-    GameStrings gStrings = new GameStrings();
-    String gameCard = gStrings.emptyString;
+    String gameCard = Constants.emptyString;
     for (int i = 0; i < answer.length(); i++) {
       if (guesses.contains(answer.charAt(i)) || answer.charAt(i) == ' ') {
         gameCard += answer.charAt(i);
       } else {
-        gameCard += gStrings.mysteryChar;
+        gameCard += Constants.mysteryChar;
       }
     }
     return gameCard;
@@ -88,14 +85,13 @@ public class GameSystem {
 
   public String initWord() {
     StrList strList = new StrList();
-    GameStrings gStrings = new GameStrings();
-    strList.addArrStr(gStrings.gameWord1);
-    strList.addArrStr(gStrings.gameWord2);
-    strList.addArrStr(gStrings.gameWord3);
-    strList.addArrStr(gStrings.gameWord4);
-    strList.addArrStr(gStrings.gameWord5);
-    strList.addArrStr(gStrings.gameWord6);
-    strList.addArrStr(gStrings.gameWord7);
+    strList.addArrStr(Constants.gameWord1);
+    strList.addArrStr(Constants.gameWord2);
+    strList.addArrStr(Constants.gameWord3);
+    strList.addArrStr(Constants.gameWord4);
+    strList.addArrStr(Constants.gameWord5);
+    strList.addArrStr(Constants.gameWord6);
+    strList.addArrStr(Constants.gameWord7);
     String word = strList.getRandomArrStr();
     return word;
   }
