@@ -1,14 +1,13 @@
 import java.util.List;
 import java.util.Scanner;
 
-import src.constants.GameStrings;
+import src.constants.Constants;
 import src.lists.CharList;
 import src.operator.GameSystem;
 
 public class Main {
   public static void main(String[] args) {
     GameSystem gameSystem = new GameSystem();
-    GameStrings gStrings = new GameStrings();
     CharList guessList = new CharList();
     CharList correctGuessList = new CharList();
     Scanner scanner = new Scanner(System.in);
@@ -23,7 +22,7 @@ public class Main {
     gameSystem.printGameScreen(correctGuesses, guesses, word, wrongCharCounter);
 
     while (!gameSystem.checkGameOver(rightCharCounter, totalCharCounter, wrongCharCounter)) {
-      System.out.print(gStrings.inputPrompt);
+      System.out.print(Constants.inputPrompt);
       String guessInput = scanner.nextLine();
       Character guess = guessInput.charAt(0);
       int guessRes = gameSystem.processUserGuess(guesses, letters, guess);
