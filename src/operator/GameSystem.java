@@ -3,8 +3,9 @@ package src.operator;
 import java.util.List;
 
 import src.constants.Constants;
-import src.lists.CharList;
-import src.lists.StrList;
+// import src.lists.CharList;
+// import src.lists.StrList;
+import src.lists.GameList;
 
 public class GameSystem {
   public boolean checkGameOver(int amountCorrect, int amountTotal, int amountIncorrect) {
@@ -71,7 +72,7 @@ public class GameSystem {
   }
 
   public List<Character> getGameWordChars(String gameWord) {
-    CharList letterList = new CharList();
+    GameList letterList = new GameList();
     List<Character> letters = letterList.charsArr;
     for (int i = 0; i < gameWord.length(); i++) {
       Character currentChar = gameWord.charAt(i);
@@ -84,7 +85,7 @@ public class GameSystem {
   }
 
   public String initWord() {
-    StrList strList = new StrList();
+    GameList strList = new GameList();
     strList.addArrStr(Constants.gameWord1);
     strList.addArrStr(Constants.gameWord2);
     strList.addArrStr(Constants.gameWord3);

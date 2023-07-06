@@ -2,14 +2,14 @@ import java.util.List;
 import java.util.Scanner;
 
 import src.constants.Constants;
-import src.lists.CharList;
+import src.lists.GameList;
 import src.operator.GameSystem;
 
 public class Main {
   public static void main(String[] args) {
     GameSystem gameSystem = new GameSystem();
-    CharList guessList = new CharList();
-    CharList correctGuessList = new CharList();
+    GameList guessList = new GameList();
+    GameList correctGuessList = new GameList();
     Scanner scanner = new Scanner(System.in);
 
     String word = gameSystem.initWord();
