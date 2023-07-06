@@ -59,10 +59,20 @@ public final class Constants {
             " |/ \\\n" +
             "-----";
 
+    public static final String guessAlreadyAttempted = "You have already guessed this letter.";
     public static final String winGame = "Congradulations! You have won!";
     public static final String loseGame = "Sorry, you lose. Good game.";
     public static final String emptyString = "";
     public static final String mysteryChar = "_";
     public static final String invalidCounter = "This counter is invalid";
     public static final String inputPrompt = "Guess a letter ";
+    public static final String enterKeyContinue = "Press enter key to continue.";
+    public static final String attempsSubStr = "Attempts: ";
+    public static final String commaSeparator = ", ";
+
+    public static final char spaceChar = ' ';
+
+    public static final int confirmGuess = 1;
+    public static final int neutralGuess = 0;
+    public static final int negateGuess = -1;
 }
