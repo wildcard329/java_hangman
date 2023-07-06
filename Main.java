@@ -26,13 +26,13 @@ public class Main {
       String guessInput = scanner.nextLine();
       Character guess = guessInput.charAt(0);
       int guessRes = gameSystem.processUserGuess(guesses, letters, guess);
-      if (guessRes == 1) {
+      if (guessRes == Constants.confirmGuess) {
         rightCharCounter++;
         guessList.addArrChar(guess);
         correctGuessList.addArrChar(guess);
-      } else if (guessRes == 0) {
-        System.out.println("You have already guessed this letter.");
-        System.out.print("Press enter key to continue.");
+      } else if (guessRes == Constants.neutralGuess) {
+        System.out.println(Constants.guessAlreadyAttempted);
+        System.out.print(Constants.enterKeyContinue);
         scanner.nextLine();
       } else {
         guessList.addArrChar(guess);

@@ -25,13 +25,13 @@ public class GameSystem {
 
   public String formatCharArrayToString(List<Character> chars) {
     int arrSize = chars.size();
-    String outputStr = "attempts: ";
+    String outputStr = Constants.attempsSubStr;
     for (int i = 0; i < arrSize; i++) {
       Character arrChar = chars.get(i);
       if (i == arrSize - 1) {
-        outputStr += arrChar.toString() + ' ';
+        outputStr += arrChar.toString() + Constants.spaceChar;
       } else {
-        outputStr += arrChar.toString() + ", ";
+        outputStr += arrChar.toString() + Constants.commaSeparator;
       }
     }
     return outputStr;
@@ -61,7 +61,7 @@ public class GameSystem {
   public String getGameClue(List<Character> guesses, String answer) {
     String gameCard = Constants.emptyString;
     for (int i = 0; i < answer.length(); i++) {
-      if (guesses.contains(answer.charAt(i)) || answer.charAt(i) == ' ') {
+      if (guesses.contains(answer.charAt(i)) || answer.charAt(i) == Constants.spaceChar) {
         gameCard += answer.charAt(i);
       } else {
         gameCard += Constants.mysteryChar;
@@ -76,7 +76,7 @@ public class GameSystem {
     for (int i = 0; i < gameWord.length(); i++) {
       Character currentChar = gameWord.charAt(i);
       Boolean isCharInStrArr = letterList.checkListForChar(currentChar);
-      if (!isCharInStrArr && currentChar != ' ') {
+      if (!isCharInStrArr && currentChar != Constants.spaceChar) {
         letterList.addArrChar(currentChar);
       }
     }
@@ -109,11 +109,11 @@ public class GameSystem {
   public int processUserGuess(List<Character> guesses, List<Character> answers, Character guessChar) {
     int result;
     if (guesses.contains(guessChar)) {
-      result = 0;
+      result = Constants.neutralGuess;
     } else if (answers.contains(guessChar)) {
-      result = 1;
+      result = Constants.confirmGuess;
     } else {
-      result = -1;
+      result = Constants.negateGuess;
     }
     return result;
   }
